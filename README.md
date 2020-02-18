@@ -3,7 +3,7 @@
 ## Installation Instructions
 1.  Clone this repository and add a copy of your TabNine configuration folder into this directory (on Linux this is ~/.config/TabNine).
 ```bash
-git clone https://github.com/deep-learning-docker
+git clone https://github.com/vim-ide-deep-learning-docker-image
 cp -R ~/.config/TabNine deep-learning-docker/TabNine
 ```
 2. Build the image:
