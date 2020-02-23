@@ -1,7 +1,7 @@
 # Deep Learning with PyTorch and a Vim Based IDE
 
 ## Installation Instructions
-1.  Clone this repository and add a copy of your TabNine configuration folder into this directory (on Linux this is ~/.config/TabNine).
+1.  (Optional, allows TabNine to use your settings and deep learning model) Clone this repository and add a copy of your TabNine configuration folder into this directory (on Linux this is ~/.config/TabNine).
 ```bash
 git clone https://github.com/vim-ide-deep-learning-docker-image
 cp -R ~/.config/TabNine deep-learning-docker/TabNine
@@ -24,8 +24,9 @@ This image is based on NVIDIA's [PyTorch image](https://ngc.nvidia.com/catalog/c
 *  awscli and boto3 for AWS.
 *  tqdm for progress bars.
 *  black for formatting.
+*  flake8 with black compatability.
 
-The Vim IDE includes nerdtree for file browsing, PEP 8 formatting, code folding, ctags for searching, TabNine for AI powered code completion, and solarized as the theme.
+The Vim IDE includes nerdtree for file browsing, PEP 8 formatting, code folding, ctags for searching, TabNine for AI powered code completion, solarized as the theme, and syntastic for catching silly bugs (I disable warnings).
 
 I built this image to provide a full featured IDE capable of running via ssh. The original intention was to replace PyCharm and the remote deploy feature, but now I like it better thanks to the total removal of the mouse. Check out [vast.ai](vast.ai) for a cheap peer-to-peer cloud option that runs the Docker image you specify.
 
