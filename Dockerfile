@@ -7,7 +7,7 @@ RUN conda install scipy numpy pandas
 RUN pip install ax-platform ray ray[tune] tqdm mlflow dask[complete] fastparquet awscli boto3 black flake8 python-language-server
 
 # Flake8 compatability with Black.
-RUN printf "[flake8]\nmax-line-length = 88\nextend-ignore = E203" >> /root/.config/.flake8
+RUN printf "[flake8]\nmax-line-length = 88\nextend-ignore = E203" >> /root/.config/flake8
 
 # Vim bash setup.
 RUN echo set -o vi >> /root/.bashrc && \
