@@ -1,10 +1,10 @@
 FROM nvcr.io/nvidia/pytorch:20.01-py3
 
 RUN apt-get update
-RUN apt-get install -y vim screen htop
+RUN apt-get install -y vim screen htop rsync
 
 RUN conda install scipy numpy pandas
-RUN pip install ax-platform ray tqdm mlflow dask[complete] fastparquet awscli boto3 black flake8 python-language-server
+RUN pip install ax-platform ray ray[tune] tqdm mlflow dask[complete] fastparquet awscli boto3 black flake8 python-language-server
 
 # Flake8 compatability with Black.
 RUN printf "[flake8]\nmax-line-length = 88\nextend-ignore = E203" >> /root/.config/.flake8
