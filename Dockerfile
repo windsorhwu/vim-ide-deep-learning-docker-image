@@ -37,4 +37,4 @@ RUN echo set tags=/root/tags >> /root/.vimrc
 # Remove the example projects and other temporary files.
 RUN rm -rf /workspace
 
-WORKDIR /workspace
+WORKDIR /root
