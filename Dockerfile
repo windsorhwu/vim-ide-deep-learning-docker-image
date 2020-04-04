@@ -1,18 +1,20 @@
-FROM nvcr.io/nvidia/pytorch:20.01-py3
+FROM nvcr.io/nvidia/pytorch:19.10-py3
 
 RUN apt-get update
 RUN apt-get install -y vim screen htop rsync
 
-RUN conda install scipy numpy pandas
+RUN conda install scipy numpy pandas psycopg2
 RUN pip install ax-platform ray ray[tune] tqdm mlflow dask[complete] fastparquet awscli boto3 black flake8 python-language-server tensorboardX
 
+
 # Flake8 compatability with Black.
-RUN printf "[flake8]\nmax-line-length = 88\nextend-ignore = E203" >> /root/.config/flake8
+RUN printf "[flake8]\nmax-line-length = 88\nextend-ignore = E203" >> /root/.config/.flake8
 
 # Vim bash setup.
 RUN echo set -o vi >> /root/.bashrc && \
     echo export VISUAL=vim >> /root/.bashrc && \
-    echo export EDITOR=vim >> /root/.bashrc
+    echo export EDITOR=vim >> /root/.bashrc && \
+    export MLFLOW_TRACKING_URI="http://0.0.0.0:5000" >> /root/.bashrc
 
 # Vim setup
 # Install vundle
