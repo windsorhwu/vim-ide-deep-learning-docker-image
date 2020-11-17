@@ -6,11 +6,17 @@
 
 FROM deep-learning
 
+WORKDIR /root
+
+RUN apt-get update
+RUN apt-get install -y vim
 RUN pip install black flake8 python-language-server
 
 # Flake8 compatability with Black.
+RUN mkdir /root/.config
 RUN printf "[flake8]\nmax-line-length=88\nextend-ignore=E203" >> /root/.config/flake8
 
+# Make vim first class.
 RUN echo set -o vi >> /root/.bashrc && \
     echo export VISUAL=vim >> /root/.bashrc && \
     echo export EDITOR=vim >> /root/.bashrc
@@ -31,7 +37,7 @@ COPY b8373e4b.tabninemodel /root/.local/share/TabNine/models/b8373e4b.tabninemod
 
 # Ctags setup.
 RUN apt-get update
-RUN apt-get install build-essential
+RUN apt-get install build-essential autoconf automake libtool
 RUN git clone https://github.com/universal-ctags/ctags.git
 RUN cd ctags && ./autogen.sh && ./configure && make && make install
 
@@ -39,5 +45,3 @@ RUN cd ctags && ./autogen.sh && ./configure && make && make install
 # See https://www.fusionbox.com/blog/detail/navigating-your-django-project-with-vim-and-ctags/590/
 RUN ctags -R --fields=+l --languages=python --python-kinds=-iv -f /root/tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")
 RUN echo set tags=/root/tags >> /root/.vimrc
-
-
