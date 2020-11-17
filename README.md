@@ -10,8 +10,8 @@ cd ..
 ```
 1.  (Optional, allows TabNine to use your settings and deep learning model) Clone this repository and add a copy of your TabNine configuration folder into this directory (on Linux this is ~/.config/TabNine). If you do not have TabNine (consider rectifying this unfortunate reality) comment out the TabNine configuration in the vim-ide Docker file.
 ```bash
-cp -R ~/.config/TabNine deep-learning-docker/TabNine .
-cp ~/.local/share/TabNine/models/model-name .
+cp -R ~/.config/TabNine deep-learning-docker/TabNine vim-ide
+cp ~/.local/share/TabNine/models/model-name vim-ide
 ```
 2. Build the vim-ide image using the deep-learning image as the base:
 ```bash
